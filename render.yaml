@@ -14,7 +14,7 @@ services:
   - type: worker
     name: celery-worker
     env: docker
-    plan: free
+    plan: starter
     dockerfilePath: ./Dockerfile
     dockerContext: .
     envVars:
@@ -26,7 +26,7 @@ services:
   - type: pserv
     name: rabbitmq
     env: docker
-    plan: free
+    plan: starter
     dockerContext: .
     dockerfilePath: ./Dockerfile.rabbitmq
     autoDeploy: false
