@@ -23,7 +23,7 @@ services:
       - key: PROD_APP_SETTINGS
         value: config.ProductionConfig
 
-  - type: pserv
+  - type: web
     name: rabbitmq
     env: docker
     plan: starter
