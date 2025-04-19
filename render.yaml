@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: flask-web
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    startCommand: gunicorn -b 0.0.0.0:5000 app:app
+    envVars:
+      - key: CELERY_BROKER_URL
+        value: amqp://guest:guest@rabbitmq:5672//
+      - key: PROD_APP_SETTINGS
+        value: config.ProductionConfig
+
+  - type: worker
+    name: celery-worker
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    startCommand: celery -A tasks.celery_app worker --loglevel=info
+    envVars:
+      - key: CELERY_BROKER_URL
+        value: amqp://guest:guest@rabbitmq:5672//
+      - key: PROD_APP_SETTINGS
+        value: config.ProductionConfig
+
+  - type: privateService
+    name: rabbitmq
+    env: docker
+    plan: free
+    dockerContext: .
+    dockerfilePath: ./Dockerfile.rabbitmq
+    autoDeploy: false
+    ports:
+      - port: 5672
+        protocol: tcp

@@ -13,4 +13,4 @@ def start_task():
     return jsonify({"task_id": task.id, "status": "started"}), 202
 
 if __name__ == '__main__':
-	app.run()
+	app.run(host='0.0.0.0', port=5000)
