@@ -25,7 +25,7 @@ services:
       - key: PROD_APP_SETTINGS
         value: config.ProductionConfig
 
-  - type: privateService
+  - type: pserv
     name: rabbitmq
     env: docker
     plan: free
