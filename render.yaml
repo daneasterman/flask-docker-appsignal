@@ -30,3 +30,7 @@ services:
     dockerContext: .
     dockerfilePath: ./Dockerfile.rabbitmq
     autoDeploy: false
+    disk:
+      name: rabbitmq
+      mountPath: /var/lib/rabbitmq
+      sizeGB: 10
