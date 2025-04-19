@@ -1,4 +1,5 @@
 import os
+import socket
 from flask import Flask, jsonify
 from tasks import generate_report
 app = Flask(__name__)
@@ -10,6 +11,7 @@ app.config.from_object(env_config)
 def start_task():
     print("📬 /start-task was called!")
     task = generate_report.delay()
+    print("RabbitMQ IP:", socket.gethostbyname("rabbitmq"))
     return jsonify({"task_id": task.id, "status": "started"}), 202
 
 if __name__ == '__main__':
