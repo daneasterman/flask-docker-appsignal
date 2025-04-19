@@ -1,0 +1,19 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:5000"
+    depends_on:
+      - rabbitmq
+
+  worker:
+    build: .
+    depends_on:
+      - rabbitmq
+    command: celery -A tasks.celery_app worker --loglevel=info
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"  # Management UI
