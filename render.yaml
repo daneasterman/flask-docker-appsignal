@@ -35,3 +35,9 @@ services:
     ports:
       - port: 5672
         protocol: tcp
+      - port: 15672
+        protocol: tcp
+    healthCheck:
+      type: http
+      path: /api/overview
+      port: 15672
