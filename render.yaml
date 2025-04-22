@@ -14,7 +14,7 @@ services:
     name: celery-worker
     env: docker
     plan: starter
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./Dockerfile.celery
     dockerContext: .
     startCommand: celery -A tasks.celery_app worker --loglevel=debug
     envVars:
