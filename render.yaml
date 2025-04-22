@@ -17,8 +17,7 @@ services:
     plan: starter
     dockerfilePath: ./Dockerfile
     dockerContext: .
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: celery -A tasks.celery_app worker --loglevel=info
+    startCommand: celery -A tasks.celery_app worker --loglevel=debug
     envVars:
       - key: CELERY_BROKER_URL
         sync: false

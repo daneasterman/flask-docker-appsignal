@@ -6,6 +6,9 @@ app = Flask(__name__)
 from dotenv import load_dotenv
 load_dotenv()
 
+import functools
+print = functools.partial(print, flush=True)
+
 env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
 app.config.from_object(env_config)
 
