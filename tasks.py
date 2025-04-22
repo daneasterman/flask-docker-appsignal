@@ -11,5 +11,5 @@ print("**BROKER_URL**", broker_url)
 
 @celery_app.task
 def generate_report():
-    time.sleep(10)
+    time.sleep(5)
     return "Report complete!"
