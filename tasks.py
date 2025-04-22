@@ -9,5 +9,7 @@ celery_app = Celery('tasks', broker=broker_url)
 
 @celery_app.task
 def generate_report():
+    print("📊 STARTING generate_report task")
     time.sleep(5)
+    print("✅ FINISHED generate_report task")
     return "Report complete!"
