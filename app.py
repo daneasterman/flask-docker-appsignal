@@ -24,7 +24,7 @@ def start_task():
     # ✅ Port connectivity test
     try:
         sock = socket.create_connection(("rabbitmq", 5672), timeout=5)
-        print("✅ Port OK: Connected to rabbitmq:5672")``
+        print("✅ Port OK: Connected to rabbitmq:5672")
         sock.close()
     except Exception as e:
         print(f"❌ PORT FAIL: Cannot connect to rabbitmq:5672 — {e}")
