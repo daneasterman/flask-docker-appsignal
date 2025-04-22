@@ -21,3 +21,5 @@ def generate_report():
     time.sleep(5)
     print("✅ FINISHED generate_report task")
     return "Report complete!"
+
+print("📦 tasks.py loaded. Celery app created:", celery_app)

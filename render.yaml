@@ -12,7 +12,6 @@ services:
 
   - type: worker
     name: celery-worker
-    runtime: python
     env: docker
     plan: starter
     dockerfilePath: ./Dockerfile
