@@ -17,4 +17,4 @@ services:
     dockerContext: .
     envVars:
       - key: CELERY_BROKER_URL
-        value: ${CELERY_BROKER_URL}
+        sync: false
