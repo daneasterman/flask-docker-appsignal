@@ -6,8 +6,6 @@ services:
     dockerfilePath: ./Dockerfile
     dockerContext: .
     envVars:
-      - key: CELERY_BROKER_URL
-        value: amqp://guest:guest@rabbitmq:5672//
       - key: PROD_APP_SETTINGS
         value: config.ProductionConfig
 
@@ -19,18 +17,4 @@ services:
     dockerContext: .
     envVars:
       - key: CELERY_BROKER_URL
-        value: amqp://guest:guest@rabbitmq:5672//
-      - key: PROD_APP_SETTINGS
-        value: config.ProductionConfig
-
-  - type: web
-    name: rabbitmq
-    env: docker
-    plan: starter
-    dockerContext: .
-    dockerfilePath: ./Dockerfile.rabbitmq
-    autoDeploy: false
-    disk:
-      name: rabbitmq
-      mountPath: /var/lib/rabbitmq
-      sizeGB: 10
+        value: ${CELERY_BROKER_URL}
