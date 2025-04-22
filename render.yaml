@@ -15,6 +15,7 @@ services:
     plan: starter
     dockerfilePath: ./Dockerfile
     dockerContext: .
+    startCommand: celery -A tasks.celery_app worker --loglevel=info
     envVars:
       - key: CELERY_BROKER_URL
         sync: false
