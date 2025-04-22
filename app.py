@@ -3,6 +3,8 @@ import socket
 from flask import Flask, jsonify
 from tasks import generate_report
 app = Flask(__name__)
+from dotenv import load_dotenv
+load_dotenv()
 
 env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
 app.config.from_object(env_config)
@@ -22,7 +24,7 @@ def start_task():
     # ✅ Port connectivity test
     try:
         sock = socket.create_connection(("rabbitmq", 5672), timeout=5)
-        print("✅ Port OK: Connected to rabbitmq:5672")
+        print("✅ Port OK: Connected to rabbitmq:5672")``
         sock.close()
     except Exception as e:
         print(f"❌ PORT FAIL: Cannot connect to rabbitmq:5672 — {e}")
