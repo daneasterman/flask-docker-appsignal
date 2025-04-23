@@ -6,9 +6,6 @@ app = Flask(__name__)
 from dotenv import load_dotenv
 load_dotenv()
 
-import functools
-print = functools.partial(print, flush=True)
-
 env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
 app.config.from_object(env_config)
 
@@ -17,7 +14,6 @@ def start_task():
     print("📬 /start-task was called!")
     task = generate_report.delay()
     return jsonify({"task_id": task.id, "status": "started"}), 202
-
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=5000)
