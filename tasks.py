@@ -17,9 +17,5 @@ def ping():
 
 @celery_app.task
 def generate_report():
-    print("📊 STARTING generate_report task")
     time.sleep(5)
-    print("✅ FINISHED generate_report task")
     return "Report complete!"
-
-print("📦 tasks.py loaded. Celery app created:", celery_app)

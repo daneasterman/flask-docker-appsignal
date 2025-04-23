@@ -8,6 +8,8 @@ services:
     envVars:
       - key: PROD_APP_SETTINGS
         value: config.ProductionConfig
+      - key: CELERY_BROKER_URL
+        sync: false
 
   - type: worker
     name: celery-worker
@@ -18,3 +20,4 @@ services:
     envVars:
       - key: CELERY_BROKER_URL
         sync: false
+ 
