@@ -1,7 +1,6 @@
 services:
   - type: web
     name: flask-web
-    runtime: python
     env: docker
     plan: starter
     dockerfilePath: ./Dockerfile
@@ -16,7 +15,6 @@ services:
     plan: starter
     dockerfilePath: ./Dockerfile.celery
     dockerContext: .
-    startCommand: celery -A tasks.celery_app worker --loglevel=debug
     envVars:
       - key: CELERY_BROKER_URL
         sync: false
