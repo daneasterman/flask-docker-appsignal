@@ -1,4 +1,4 @@
-# Dockerfile.celery
+# Dockerfile.worker
 
 FROM python:3.10-slim
 

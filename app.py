@@ -1,10 +1,10 @@
 import os
-import socket
 from flask import Flask, jsonify
 from tasks import generate_report
-app = Flask(__name__)
 from dotenv import load_dotenv
 load_dotenv()
+
+app = Flask(__name__)
 
 env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
 app.config.from_object(env_config)

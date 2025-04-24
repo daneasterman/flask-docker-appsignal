@@ -15,7 +15,7 @@ services:
     name: celery-worker
     env: docker
     plan: starter
-    dockerfilePath: ./Dockerfile.celery
+    dockerfilePath: ./Dockerfile.worker
     dockerContext: .
     envVars:
       - key: CELERY_BROKER_URL

@@ -8,11 +8,6 @@ broker_url = os.environ.get("CELERY_BROKER_URL", "amqp://guest:guest@rabbitmq:56
 celery_app = Celery('tasks', broker=broker_url)
 
 @celery_app.task
-def ping():
-    print("👋 ping task received")
-    return "pong"
-
-@celery_app.task
 def generate_report():
-    time.sleep(5)
+    time.sleep(10)
     return "Report complete!"
